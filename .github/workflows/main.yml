@@ -26,6 +26,6 @@ jobs:
     - name: Main
       run: |
         sudo su
-        sudo curl -L https://raw.githubusercontent.com/spiritLHLS/gaganode-one-click-command-installation/main/g.sh -o g.sh && chmod +x g.sh
+        curl -L https://raw.githubusercontent.com/spiritLHLS/gaganode-one-click-command-installation/main/g.sh -o g.sh && chmod +x g.sh
         sudo bash g.sh -t yobqbmxayydohqrhc9a977e15c9875e03
         sleep 6h
